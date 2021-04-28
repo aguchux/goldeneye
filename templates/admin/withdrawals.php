@@ -1,6 +1,6 @@
 <?php
 $DB = new Apps\MysqliDb;
-$Accounts = $DB->get("inv_users");
+$Withdrawals = $DB->get("withdrawals");
 ?>
 <!-- Main content -->
 <section class="content">
@@ -11,42 +11,37 @@ $Accounts = $DB->get("inv_users");
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">View all Accounts.</h3>
+                        <h3 class="card-title">View all Withdrawals.</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Country(Currency)</th>
-                                    <th>Address</th>
+                                    <th>id</th>
+                                    <th>Amount</th>
+                                    <th>Action Date</th>
+                                    <th>Status</th>
                                     <th>-</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($Accounts as $account) : ?>
+                                <?php foreach ($Withdrawals as $withdrawal) : ?>
                                     <tr>
-                                    <td><?= $account['accid'] ?></td>
-                                        <td><?= "{$account['firstname']} {$account['lastname']}" ?></td>
-                                        <td><?= $account['email'] ?></td>
-                                        <td><?= $account['mobile'] ?></td>
-                                        <td><?= "{$account['country']}({$account['currency']})" ?></td>
-                                        <td><?= $account['address'] ?></td>
+                                        <td><?= $withdrawal['id'] ?></td>
+                                        <td><?= $Core->Monify($withdrawal['amount']) ?></td>
+                                        <td><?= date("jS F Y H:i:s", strtotime($withdrawal['created'])) ?></td>
+                                        <td><?= $withdrawal['status'] ?></td>
+                                        <td> - </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Country(Currency)</th>
-                                    <th>Address</th>
+                                    <th>id</th>
+                                    <th>Amount</th>
+                                    <th>Action Date</th>
+                                    <th>Status</th>
                                     <th>-</th>
                                 </tr>
                             </tfoot>

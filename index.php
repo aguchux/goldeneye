@@ -35,6 +35,7 @@ $Route->add("/pages/{category}/{page}", function($category,$page){
 
 require_once DOT . "/_public/auth.php";
 require_once DOT . "/_public/users.php";
+require_once DOT . "/_public/admin.php";
 
 //Logout Sessions//
 $Route->add(

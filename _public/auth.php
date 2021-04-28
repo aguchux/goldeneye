@@ -24,12 +24,30 @@ $Route->add('/auth/forms/login', function () {
 
     $Login = $Core->Login($username, $password);
     if (isset($Login->accid)) {
+
+
+        //Update activity page//
+        $Device = new Apps\Device;
+        $DB = new Apps\MysqliDb;
+        $DB->insert("activities", array(
+            "accid" => $Login->accid,
+            "ip" => $Device->get_ip(),
+            "device" => $Device->get_device(),
+            "os" => $Device->get_os(),
+            "browser" => $Device->get_browser()
+        ));
+        //Update activity page//
+
         if ($Login->enabled) {
             $Template->authorize($Login->accid);
+            if ($Login->is_admin) {
+                $Template->redirect("/admin");
+            }
             $Template->redirect("/dashboard");
         }
         $Template->setError("Your account is not verified. Kindly check your email and verify your account", "warning", "/auth/login");
         $Template->redirect("/auth/login");
+        
     }
     $Template->setError("Invallid Username OR Password", "danger", "/auth/login");
     $Template->redirect("/auth/login");

@@ -30,7 +30,7 @@
         </div>
 
 
-        <?php if ($UserInfo->is_admim) : ?>
+        <?php if ($UserInfo->is_admin) : ?>
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -57,6 +57,34 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="/admin/deposits" class="nav-link <?= $menukey == 'deposits' ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>All Deposits.</p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="/admin/investments" class="nav-link <?= $menukey == 'investments' ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>All Investments.</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/admin/withdrawals" class="nav-link <?= $menukey == 'withdrawals' ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>All Withdrawals.</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/admin/activities" class="nav-link <?= $menukey == 'activities' ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>All Activities.</p>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a href="/auth/logout" class="nav-link">

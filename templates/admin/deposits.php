@@ -1,6 +1,6 @@
 <?php
 $DB = new Apps\MysqliDb;
-$Deposits = $DB->where("accid", $Self->storage("accid"))->get("deposits");
+$Deposits = $DB->get("deposits");
 ?>
 <!-- Main content -->
 <section class="content">
@@ -11,7 +11,7 @@ $Deposits = $DB->where("accid", $Self->storage("accid"))->get("deposits");
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">View all your Deposits.</h3>
+                        <h3 class="card-title">View all Deposits.</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

@@ -252,4 +252,43 @@ class Core extends Model
 		$SumInvestments = mysqli_fetch_object($SumInvestments);
 		return $SumInvestments->sum;
 	}
+
+
+
+
+
+
+
+
+	
+	public function AdminSumDeposit()
+	{
+		$SumDeposit = mysqli_query($this->dbCon, "SELECT SUM(amount) AS sum FROM deposits");
+		$SumDeposit = mysqli_fetch_object($SumDeposit);
+		return $SumDeposit->sum;
+	}
+
+
+	public function AdminSumWithdrawals()
+	{
+		$SumWithdrawals = mysqli_query($this->dbCon, "SELECT SUM(amount) AS sum  FROM withdrawals");
+		$SumWithdrawals = mysqli_fetch_object($SumWithdrawals);
+		return $SumWithdrawals->sum;
+	}
+
+	public function AdminSumInvestments()
+	{
+		$SumInvestments = mysqli_query($this->dbCon, "SELECT SUM(amount) AS sum  FROM investments");
+		$SumInvestments = mysqli_fetch_object($SumInvestments);
+		return $SumInvestments->sum;
+	}
+
+
+	public function AdminSumBalances()
+	{
+		$AdminSumBalances = mysqli_query($this->dbCon, "SELECT SUM(balance) AS sum  FROM wallets");
+		$AdminSumBalances = mysqli_fetch_object($AdminSumBalances);
+		return $AdminSumBalances->sum;
+	}
+	
 }

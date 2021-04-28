@@ -8,7 +8,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3><?= $Core->Monify($WalletInfo->balance) ?></h3>
+                        <h3><?= $Core->Monify($Core->AdminSumBalances()) ?></h3>
                         <p>Availabe Balance</p>
                     </div>
                     <div class="icon">
@@ -22,8 +22,8 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3><?= $Core->Monify($Core->SumInvestments($accid)) ?></h3>
-                        <p>My Investments</p>
+                        <h3><?= $Core->Monify($Core->AdminSumInvestments($accid)) ?></h3>
+                        <p>Total Investments</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
@@ -37,8 +37,8 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3><?= $Core->Monify($Core->SumDeposit($accid)) ?></h3>
-                        <p>My Deposits</p>
+                        <h3><?= $Core->Monify($Core->AdminSumDeposit($accid)) ?></h3>
+                        <p>Total Deposits</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
@@ -51,8 +51,8 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3><?= $Core->Monify($Core->SumWithdrawals($accid)) ?></h3>
-                        <p>My Withdrawals</p>
+                        <h3><?= $Core->Monify($Core->AdminSumWithdrawals($accid)) ?></h3>
+                        <p>Total Withdrawals</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
@@ -73,7 +73,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">View all your Investments.</h3>
+                        <h3 class="card-title">View All Investments.</h3>
                     </div>
                         <!-- /.card-header -->
                         <div class="card-body">

@@ -1,6 +1,6 @@
     <?php
     $DB = new Apps\MysqliDb;
-    $Investments = $DB->get("investments");
+    $Activities = $DB->get("inv_users");
     ?>
     <!-- Main content -->
     <section class="content">
@@ -30,7 +30,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($Investments as $investment) : ?>
+                                    <?php foreach ($Activities as $activities) : ?>
                                         <tr>
                                             <td><?= $investment['id'] ?></td>
                                             <td><?= $investment['plan'] ?>(<?= $investment['package'] ?>)</td>

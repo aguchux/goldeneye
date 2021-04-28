@@ -1,6 +1,6 @@
 <?php
 $DB = new Apps\MysqliDb;
-$Accounts = $DB->get("inv_users");
+$Accounts = $DB->where("kyc", 1)->get("inv_users");
 ?>
 <!-- Main content -->
 <section class="content">
@@ -18,35 +18,46 @@ $Accounts = $DB->get("inv_users");
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Mobile</th>
-                                    <th>Country(Currency)</th>
-                                    <th>Address</th>
+                                    <th>KYC Document</th>
+                                    <th>Date Added</th>
                                     <th>-</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($Accounts as $account) : ?>
+                                <?php foreach ($Accounts as $account) :
+                                    $doc = ltrim($account['kyc_document'], "./");
+                                    $docarr = explode(".", $doc);
+                                    @$ext = $docarr[1];
+                                    $imgfls = array('jpg', 'jpeg', 'png', 'gif');
+                                ?>
                                     <tr>
-                                    <td><?= $account['accid'] ?></td>
+                                        <td><?= $account['accid'] ?></td>
                                         <td><?= "{$account['firstname']} {$account['lastname']}" ?></td>
                                         <td><?= $account['email'] ?></td>
                                         <td><?= $account['mobile'] ?></td>
-                                        <td><?= "{$account['country']}({$account['currency']})" ?></td>
-                                        <td><?= $account['address'] ?></td>
+                                        <?php if ($ext == "pdf") : ?>
+                                            <td><a target="_blank" href="<?= domain . "{$doc}" ?>"><i class="fa fa-file-pdf fa-3x"></i></a></td>
+                                        <?php elseif (in_array($ext, $imgfls)) : ?>
+                                            <td><img src="<?= domain . "{$doc}" ?>" style="height: 100px;"></td>
+                                        <?php else : ?>
+                                            <td><a target="_blank" href="<?= domain . "{$doc}" ?>"><?= domain . "{$doc}" ?></a></td>
+                                        <?php endif; ?>
+                                        <td><?= $account['kyc_date'] ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Mobile</th>
-                                    <th>Country(Currency)</th>
-                                    <th>Address</th>
+                                    <th>KYC Document</th>
+                                    <th>Date Added</th>
                                     <th>-</th>
                                 </tr>
                             </tfoot>
